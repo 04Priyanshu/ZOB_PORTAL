@@ -7,7 +7,7 @@ const isAuth = async (req, res, next) => {
             return res.status(401).json({ message: "Unauthorized", success: false });
         }
         const decoded = await jwt.verify(token, process.env.SECRET_KEY);
-        //console.log(decoded);
+        console.log(decoded);
         
         if (!decoded) {
             return res.status(401).json({ message: "Unauthorized", success: false });
