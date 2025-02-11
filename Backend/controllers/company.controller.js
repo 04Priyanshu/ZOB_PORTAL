@@ -6,7 +6,7 @@ export const registerCompany = async (req, res) => {
         if(!companyName){
             return res.status(400).json({message: "Company name is required", success: false});
         }
-        let company = await Company.findOne({name: companyName});
+        let company = await Company.findOne({name: companyName}).populate({path:"userId"});
         if(company){
             return res.status(400).json({message: "Company already exists", success: false});
         }
@@ -27,7 +27,7 @@ export const registerCompany = async (req, res) => {
 export const getCompany = async (req, res) => {
     try {
         const userId = req.id;// for logged in user
-        const companies = await Company.find({userId});
+        const companies = await Company.find({userId}).populate({path:"userId"});
         if(!companies){
             return res.status(404).json({message: "Companies not found", success: false});
         }

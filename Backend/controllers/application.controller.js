@@ -1,4 +1,3 @@
-import { populate } from "dotenv";
 import { Application } from "../models/application.model.js";
 import {Job} from "../models/jobs.model.js";
 
