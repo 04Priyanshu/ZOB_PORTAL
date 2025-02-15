@@ -3,6 +3,8 @@ import React from 'react'
 import { Avatar, AvatarImage } from '@radix-ui/react-avatar'
 import { Button } from '../button'
 import { LogOut, User2 } from 'lucide-react'
+import { Link } from 'react-router-dom'
+
 
 function Navbar() {
     const user=false;
@@ -10,7 +12,7 @@ function Navbar() {
         <div className='bg-white'>
             <div className='flex justify-between items-center mx-auto max-w-7xl h-16 '>
                 <div>
-                    <h1 className='text-2xl font-bold'>Job <span className='text-[#F83002]'>Portal</span></h1>
+                    <h1 className='text-2xl font-bold'>Blinker <span className='text-[#F83002]'>Loan</span></h1>
                 </div>
 
                 <div className='flex gap-12 items-center'>
@@ -22,8 +24,9 @@ function Navbar() {
                     {
                         !user ?(
                             <div className='flex items-center gap-2'>
-                                <Button className="bg-blue-500 text-white hover:bg-blue-600 rounded-full px-4 py-2 transition duration-300 ease-in-out transform hover:scale-105">Login</Button>
-                                <Button className="bg-[#F83002] text-white hover:bg-[#d72a00] rounded-full px-4 py-2 transition duration-300 ease-in-out transform hover:scale-105">Signup</Button>
+                                <Link to="/Login"><Button className=" text-black   px-4 py-2 transition duration-300 ease-in-out transform hover:scale-105">Login</Button></Link>
+                                <Link to="/Signup"><Button className="bg-[#6A38C2] text-white hover:bg-[#d72a00]  px-4 py-2 transition duration-300 ease-in-out transform hover:scale-105">Signup</Button></Link>
+                                
                             </div>
                         ):(
                             <Popover >

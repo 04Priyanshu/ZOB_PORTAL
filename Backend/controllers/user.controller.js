@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 export const register = async (req, res) => {
     try {
         const { fullname, email, phonenumber, password, role } = req.body;
+        console.log(req.body);
         if (!fullname || !email || !phonenumber || !password || !role) {
             return res.status(400).json({ message: "All fields are required", success: false });
         }
@@ -21,9 +22,9 @@ export const register = async (req, res) => {
             password: hashedPassword,
             role
         });
-        res.status(201).json({ message: "User created successfully", success: true });
+        res.status(200).json({ message: "User created successfully", success: true  });
     } catch (error) {
-        console.log(error);
+        console.log("Error in user registration:", error.message);
 
     }
 };
@@ -31,6 +32,7 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         const { email, password, role } = req.body;
+        console.log(email, password, role);
         if (!email || !password || !role) {
             return res.status(400).json({ message: "All fields are required", success: false });
         }
@@ -42,7 +44,6 @@ export const login = async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ message: "Invalid credentials", success: false });
         }
-        // res.status(200).json({ message: "User logged in successfully", success: true });
 
         // check user role
         if (user.role !== role) {
